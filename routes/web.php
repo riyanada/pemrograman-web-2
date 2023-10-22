@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/blog', [BlogController::class, 'home'])->name('blog');
-Route::get('/blog/tentang', [BlogController::class, 'tentang'])->name('blog.tentang');
-Route::get('/blog/kontak', [BlogController::class, 'kontak'])->name('blog.kontak');
