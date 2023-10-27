@@ -20,3 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/pegawai', [PegawaiController::class, 'index']);
+Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah']);
+Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
+Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus']);
+Route::post('/pegawai/update', [PegawaiController::class, 'update']);
+Route::post('/pegawai/store', [PegawaiController::class,'store']);
