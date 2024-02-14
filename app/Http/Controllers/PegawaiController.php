@@ -11,6 +11,6 @@ class PegawaiController extends Controller
     {
         $pegawai = DB::table('pegawai')->get();
 
-        return view('index', ['pegawai' => $pegawai]);
+        return view('pegawai/table', ['pegawai' => $pegawai]);
     }
 }
