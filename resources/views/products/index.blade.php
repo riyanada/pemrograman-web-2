@@ -17,7 +17,7 @@
                         <p class="card-text">
                             {{ $product->price }}
                         </p>
-                        <a href="javascript:;" class="btn btn-primary">Beli</a>
+                        <a href="{{ route('carts.add', ['id' => $product->id]) }}" class="btn btn-primary">Beli</a>
                     </div>
                 </div>
             </div>

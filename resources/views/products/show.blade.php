@@ -16,7 +16,7 @@
                     {{ $product->price }}
                 </h4>
                 <div class="mt-4">
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ route('carts.add', ['id' => $product->id]) }}" class="btn btn-primary">
                         Beli Sekarang!
                     </a>
                 </div>
