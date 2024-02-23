@@ -63,10 +63,26 @@ class ProductController extends Controller
             abort(404);
         }
 
-        $fileContents = file_get_contents($filePath);
-        $mime = mime_content_type($filePath);
-        return (new Response($fileContents, 200))->header('Content-Type', $mime);
+        $image = imagecreatefromstring(file_get_contents($filePath));
+
+        $width = imagesx($image);
+        $height = imagesy($image);
+
+        $newWidth = 500;
+        $newHeight = ($newWidth / $width) * $height;
+
+        $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresized($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+        ob_start();
+        imagejpeg($resizedImage, null, 100);
+        $imageContent = ob_get_clean();
+
+        $mime = 'image/jpeg'; // atau sesuaikan dengan jenis gambar yang digunakan
+
+        return response($imageContent)->header('Content-Type', $mime);
     }
+
 
     /**
      * Show the form for editing the specified resource.

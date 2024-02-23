@@ -31,6 +31,18 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+
+                <li class="nav-item">
+                    <a href="{{ route('carts.index') }}" class="btn btn-primary btn-block">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                        @php
+                            $cartItems = session('cart');
+                            $cartCount = is_array($cartItems) ? count($cartItems) : 0;
+                        @endphp
+                        <span class="badge badge-pill badge-danger">{{ $cartCount }}</span>
+                    </a>
+                </li>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">

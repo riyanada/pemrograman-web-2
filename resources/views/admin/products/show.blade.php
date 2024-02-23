@@ -26,7 +26,7 @@
                             </tr>
                             <tr>
                                 <th>Gambar Produk</th>
-                                <td><img src="{{ $product->image_url }}" alt="Gambar Produk">
+                                <td><img src="{{ route('products.image', ['imageName' => $product->image_url]) }}" alt="Gambar Produk">
                                 </td>
                             </tr>
                         </tbody>
