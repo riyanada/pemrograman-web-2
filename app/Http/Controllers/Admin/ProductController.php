@@ -64,7 +64,7 @@ class ProductController extends Controller
             $image = $request->file('image_url');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/images/products', $filename);
-            $product->image_url = asset(Storage::url($path));
+            $product->image_url = $filename;
         }
 
         $product->save();
