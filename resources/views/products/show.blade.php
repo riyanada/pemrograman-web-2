@@ -12,7 +12,7 @@
                 {{ $product->name }}
             </h3>
             <h4>
-                {{ $product->price }}
+                {{ $product->price }} 
             </h4>
             <div class="mt-4">
                 <a href="{{ route('carts.add', ['id' => $product->id]) }}" class="btn btn-primary">

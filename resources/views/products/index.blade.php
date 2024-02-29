@@ -28,7 +28,7 @@
                         <h5 class="card-title">
                             <a href="{{ route('products.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
                         </h5>
-                        <p class="card-text">
+                        <p class="card-text"> 
                             {{ $product->price }}
                         </p>
                         <a href="{{ route('carts.add', ['id' => $product->id]) }}" class="btn btn-primary">Beli</a>

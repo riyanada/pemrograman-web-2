@@ -18,7 +18,7 @@ class ProductController extends Controller
         $productInstance = new Product();
         $products = $productInstance->orderProducts($request->get('order_by'));
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products')); 
     }
 
     /**
