@@ -13,9 +13,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $productInstance = new Product();
+        $products = $productInstance->orderProducts($request->get('order_by'));
+
         return view('products.index', compact('products'));
     }
 
