@@ -61,6 +61,14 @@
                                     <a class="dropdown-item" href="{{ route('admin.products.create') }}">Tambah</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.orders.index') }}">Lihat</a>
+                                    <a class="dropdown-item" href="{{ route('admin.orders.create') }}">Tambah</a>
+                                </div>
+                            </li>
                         @endif
                     </ul>
 

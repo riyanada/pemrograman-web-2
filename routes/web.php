@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
@@ -43,4 +44,5 @@ Route::prefix('carts')->name('carts.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', ProductController::class);
+    Route::resource('orders', OrderController::class);
 });
