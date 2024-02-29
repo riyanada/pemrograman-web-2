@@ -18,6 +18,10 @@ class ProductController extends Controller
         $productInstance = new Product();
         $products = $productInstance->orderProducts($request->get('order_by'));
 
+        if ($request->ajax()) {
+            return response()->json($products, 200);
+        }
+
         return view('products.index', compact('products')); 
     }
 

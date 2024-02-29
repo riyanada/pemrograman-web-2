@@ -42,11 +42,45 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#order_field').change(function(){
-                window.location.href = 'products/?order_by=' + $(this).val();
-                // console.log($(this).val());
-            })
-        })
-    </script>
+    $(document).ready(function(){
+        $('#order_field').change(function(){
+            $.ajax({
+                type: 'GET',
+                url: '/products', // Ubah URL sesuai dengan kebutuhan Anda
+                data: {
+                    order_by: $(this).val(),
+                },
+                dataType: 'json',
+                success: function(data){
+                    var products = '';
+                    $.each(data, function(idx, product){
+                        if(idx == 0 || idx % 4 == 0){
+                            products += '<div class="row mt-4">';
+                        }
+                        products += `<div class="col">
+                                        <div class="card">
+                                            <img src="/products/image/${product.image_url}" alt="..." class="card-img-top">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <a href="/products/${product.id}">${product.name}</a>
+                                                </h5>
+                                                <p class="card-text">${product.price}</p>
+                                                <a href="/carts/add/${product.id}" class="btn btn-primary">Beli</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                        if ((idx + 1) % 4 == 0) {
+                            products += '</div>'; // Menutup div.row setiap empat elemen
+                        }
+                    });
+                    $('#product-list').html(products);
+                },
+                error: function(data){
+                    alert('Unable to handle request');
+                }
+            });
+        });
+    });
+</script>
+
 @endsection
